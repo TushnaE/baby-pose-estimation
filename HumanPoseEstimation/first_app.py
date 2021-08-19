@@ -1,6 +1,4 @@
 import streamlit as st
-# To make things easier later, we're also importing numpy and pandas for
-# working with sample data.
 import numpy as np
 import pandas as pd
 import cv2
@@ -21,25 +19,15 @@ on Leeds DataSet
 st.markdown('##')
 
 
-
 df = pd.DataFrame(
     [["OpenPose (CMU-Pose)", "61.8", "84.9", "67.5", "136 MB"],["AlphaPose", "73.3", "89.2", "79.1", "209 MB"]],
     columns=(['model tested', 'AP@0.5:0.95', 'mAP@0.5', 'AP@0.75', 'model size']))
-
-
-# df = pd.DataFrame(
-#     [["Full size U-2 Net", "salient object detection", "176.3 MB", "DUTS-TR", ""], ["Lightweight U-2 Net ", "salient object detection", "4.7 MB", "DUTS-TR", ""],["Mask R-CCN w/ Swin-T Backbone", "object detection + segmentation", "48M params", "COCO", ""],["Cascade Mask R-CNN w/ Swin-T Backbone", "object detection + segmentation", "86M params", "COCO", ""]],
-#     columns=(['model tested', 'description', 'model size', 'training dataset', 'latency (ms)']))
-
-
-
 
 
 st.dataframe(df)  # Same as st.write(df)
 
 placeholder = cv2.imread(r"/Users/tushna/Desktop/HAHA.png")
 
-# TODO: Replace this with the original images directory....
 temp_images_dir = glob.glob(r"/Users/tushna/Desktop/Classes/Projects/HumanPoseEstimation/lsp_dataset/leeds_sports_trials/*.jpg")
 
 print(len(temp_images_dir))
@@ -61,9 +49,6 @@ for im in temp_images_dir:
 
     images_dir.append(im)
 
-print(len(images_dir))
-
-
 display_images = []
 
 for num in range(0,10):
@@ -72,27 +57,15 @@ for num in range(0,10):
 
     split_char = '''/'''
     image_name = im.split(split_char)[-1]
-    # num = image_name.split('.')[0]
 
     display_images.append(image_name)
-
-
-print(display_images)
-# for image in display_images:
-#     ## search for this image in all 5 directories,
-#     ## and display
-#     col1, col2, col3, col4 = st.columns(4)
 
 st.markdown('##')
 st.markdown('##')
 st.markdown('##')
 
 for i in range(0, len(display_images)):
-# for i in range(0, 1):
-    # cols = st.columns(4)
-    col1, col2, col3 = st.columns(3)
-    # col1.write(f'{i}')
-    
+    col1, col2, col3 = st.columns(3)    
     num = display_images[i]
     
     with col1:
@@ -111,17 +84,10 @@ for i in range(0, len(display_images)):
     with col2:
         im1_u2 = cv2.imread(r"/Users/tushna/Desktop/Classes/Projects/HumanPoseEstimation/lsp_dataset/leeds_sports_finished/" + num)
         im1_u2 = cv2.cvtColor(im1_u2, cv2.COLOR_RGB2BGR)
-        # im1_u2 = im1_u2[:,:,[2,1,0]]
 
         st.image(im1_u2, width=200)
         st.subheader("[openpose]")
         
-        # im1_u2p = cv2.imread(r"C:\Users\t-teduljee\Desktop\done\u2p_masks_applied\\" + num + ".png")
-        # im1_u2p = cv2.cvtColor(im1_u2p, cv2.COLOR_BGR2RGB)
-
-        # st.image(placeholder, use_column_width=True)
-        # st.subheader("Lightweight U-2 Net")
-
         st.markdown('##')
         st.markdown("""---""")
         st.markdown('##')
@@ -132,12 +98,9 @@ for i in range(0, len(display_images)):
         im1_u2p = cv2.imread(r"/Users/tushna/Desktop/Classes/Projects/HumanPoseEstimation/lsp_dataset/alphapose_outputs/" + num)
         im1_u2p = cv2.cvtColor(im1_u2p, cv2.COLOR_RGB2BGR)
 
-
         st.image(im1_u2p, width=200)
         st.subheader("[alphapose]")
 
-        # st.image(placeholder, use_column_width=True)
-        # st.subheader("Mask R-CCN + Swin-T")
         st.markdown('##')
         st.markdown("""---""")
         st.markdown('##')
