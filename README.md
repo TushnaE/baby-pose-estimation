@@ -8,3 +8,5 @@ Human Pose Estimation for Early Cerebral Palsy Detection
 ### Data Visualization Website
 [Link to Data Vis Code](https://github.com/TushnaE/baby-pose-estimation/blob/main/HumanPoseEstimation/first_app.py)
 
+### Model Code
+[Link to Model Code](https://github.com/TushnaE/baby-pose-estimation/tree/main/HumanPoseEstimation/pytorch-openpose)
